@@ -82,7 +82,7 @@ export default function DataFetcher() {
                   <td>{item.Serial}</td>
                   <td>${item.Price}</td>
                   <td>{item.CTF}</td>
-                  <td>{item.ItemLink}</td>
+                  <td><a href={item.ItemLink}>{item.ItemLink}</a></td>
                   <td>{item.DataArtworkId}</td>
                   <td>{item.DataProductTypeId}</td>
                   <td>{item.DataItemOptionId}</td>
