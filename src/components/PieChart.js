@@ -3,6 +3,7 @@ import React from "react";
 import { Chart } from "react-google-charts";
 
 export default function SimplePieChart({ data }) {
+
   // Count the occurrences of each product type
   const typeCounts = data.reduce((acc, item) => {
     acc[item.Type] = (acc[item.Type] || 0) + 1;
