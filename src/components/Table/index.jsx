@@ -40,7 +40,7 @@ const Table = ({ onTableReady }) => {
       $(tableElement).DataTable({
         deferRender: true, // For performance
         paging: true,
-        pageLength: 25,
+        pageLength: 10,
       });
       setLoading(false);
       if (onTableReady) {
