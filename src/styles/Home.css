@@ -254,12 +254,14 @@
 
   /* loading */
 
-  .spinner-container {
+  /* src/styles/loader.css */
+.spinner-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    padding: 2rem;
+    min-height: 200px;
     text-align: center;
   }
   
@@ -275,6 +277,18 @@
   @keyframes spin {
     to {
       transform: rotate(360deg);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .spinner-container {
+      padding: 1rem;
+      min-height: 150px;
+    }
+  
+    .spinner {
+      width: 36px;
+      height: 36px;
     }
   }
   
