@@ -8,47 +8,70 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Home() {
-    const [showChart, setShowChart] = React.useState(false);
-    const handleClick = () => {
-        setShowChart(true);
-    }
-    
-    return (
-        <div className='home'>
-            <h1>Welcome to the Data Visualization</h1>
-            <p>Click the button below to view the chart of our data</p>
+  const [showChart, setShowChart] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-            <AnimatePresence>
-                {!showChart && (
-                    <motion.div
-                        key="button"
-                        initial={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }} // 🔹 fast transition
-                    >
-                        <Button onClick={handleClick} className='btn-view-data' variant="primary">
-                            View Data
-                        </Button>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+  const handleClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setShowChart(true);
+    }, 1000); // simulate loading
+  };
 
-            {/* {showChart && <DataFetcher/>} */}
-            <AnimatePresence>
-                {showChart && (
-                    <motion.div
-                        key="chart"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }} // 🔹 fast transition
-                    >
-                        <DataFetcher />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+  return (
+    <div className='home'>
+      <h1>Welcome to the Data Visualization</h1>
+      <p>Click the button below to view the chart of our data</p>
 
-            <Footer/>
-        </div>
-    )
+      <AnimatePresence>
+        {!showChart && !isLoading && (
+          <motion.div
+            key="button"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Button onClick={handleClick} className='btn-view-data' variant="primary">
+              View Data
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 🔄 Loading Spinner */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            key="loader"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="loading-container"
+          >
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showChart && (
+          <motion.div
+            key="chart"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+          >
+            <DataFetcher />
+            
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <Footer />
+    </div>
+  );
 }
