@@ -49,7 +49,6 @@ export default function SimplePieChart({ data }) {
           minWidth: "300px", // Ensures readability on small screens
         }}
       >
-        <h3>Pie Chart</h3>
         <Chart
           chartType="PieChart"
           data={chartData}

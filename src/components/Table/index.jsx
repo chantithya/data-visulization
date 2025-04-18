@@ -1,24 +1,26 @@
-// components/Table/index.jsx 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import $ from "jquery";
 import "datatables.net-dt/css/dataTables.dataTables.css";
 import "datatables.net";
 
 import columns from "../../data/columns";
 import data from "../../data/data.json";
+import "../../styles/Home.css"; 
 
 
-// components/Table/index.jsx
+
 const Table = ({ onTableReady }) => {
   const tableRef = useRef();
+  const [loading, setLoading] = useState(true); // Start with loading state
 
   useEffect(() => {
     const tableElement = tableRef.current;
 
     const timeout = setTimeout(() => {
       $(tableElement).DataTable(); // Initialize DataTable
+      setLoading(false); // Once DataTable is ready, stop loading
       if (onTableReady) {
-        onTableReady(); // Notify parent that table is ready
+        onTableReady();
       }
     }, 0);
 
@@ -32,7 +34,20 @@ const Table = ({ onTableReady }) => {
 
   return (
     <div style={{ overflowX: "auto" }}>
-      <table ref={tableRef} className="display" style={{ width: "100%" }}>
+      {loading && (
+        // <div style={{ textAlign: "center", padding: "20px" }}>
+        //   <span>Loading DataTable...</span>
+        // </div>
+        <div className="spinner-container">
+          <div className="spinner"></div>
+        </div>
+      )}
+
+      <table
+        ref={tableRef}
+        className="display"
+        style={{ width: "100%", display: loading ? "none" : "table" }}
+      >
         <thead>
           <tr>
             {columns.map((col) => (
@@ -60,4 +75,3 @@ const Table = ({ onTableReady }) => {
 };
 
 export default Table;
-

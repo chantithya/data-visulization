@@ -8,6 +8,7 @@ import "datatables.net-dt";
 // import StackedBarChart from "./StackedBarChart";
 // import RawDataTable from "./RawDataTable";
 import Table from "./Table"
+import "../styles/Home.css"; // Import your CSS file for styling
 
 export default function DataFetcher({ onTableReady }) {
   const [data, setData] = useState([]);
@@ -43,11 +44,17 @@ export default function DataFetcher({ onTableReady }) {
     <div className="chart-container" style={{ width: "100%", margin: "0 auto", padding: "20px" }}>
 
       {/* Raw Data Table Section */}
+      <h3>Raw Data Table</h3>
       <Table onTableReady={onTableReady} />
 
       <div style={{ marginTop: "40px" }}>
         <h3>Bar Chart</h3>
-        <Suspense fallback={<div>Loading chart...</div>}>
+        <Suspense fallback={
+          // <div>Loading chart...</div>
+          <div className="spinner-container">
+            <div className="spinner"></div>
+          </div>
+        }>
           <LazyBarChart data={data} />
         </Suspense>
       </div>
@@ -55,7 +62,13 @@ export default function DataFetcher({ onTableReady }) {
       <hr />
 
       <div style={{ marginTop: "40px" }}>
-        <Suspense fallback={<div>Loading chart...</div>}>
+        <h3>Pie Chart</h3>
+        <Suspense fallback={
+            // <div>Loading chart...</div>
+            <div className="spinner-container">
+              <div className="spinner"></div>
+            </div>
+          }>
           <LazyPieChart data={data} />
         </Suspense>
       </div>
@@ -64,7 +77,12 @@ export default function DataFetcher({ onTableReady }) {
 
       <div style={{ marginTop: "40px" }}>
         <h3>Stacked BarChart</h3>
-        <Suspense fallback={<div>Loading chart...</div>}>
+        <Suspense fallback={
+            // <div>Loading chart...</div>
+            <div className="spinner-container">
+              <div className="spinner"></div>
+            </div>
+          }>
           <LazyStackedBarChart data={data} />
         </Suspense>
       </div>

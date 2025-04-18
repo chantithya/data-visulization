@@ -6,6 +6,7 @@ import DataFetcher from './DataFetcher';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { motion, AnimatePresence } from 'framer-motion';
+import "../styles/Home.css"; // Import your CSS file for styling
 
 export default function Home() {
   const [showChart, setShowChart] = React.useState(false);
@@ -16,7 +17,7 @@ export default function Home() {
     setTimeout(() => {
       setIsLoading(false);
       setShowChart(true);
-    }, 1000); // simulate loading
+    }, 0); // simulate loading
   };
 
   return (
@@ -49,8 +50,8 @@ export default function Home() {
             exit={{ opacity: 0 }}
             className="loading-container"
           >
-            <div className="spinner-border text-primary" role="status">
-              <span className="visually-hidden">Loading...</span>
+            <div className="spinner-container">
+                <div className="spinner"></div>
             </div>
           </motion.div>
         )}
