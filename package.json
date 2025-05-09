@@ -11,6 +11,9 @@
   "dependencies": {
   
     
+  "@canvasjs/react-charts": "^1.0.2",
+  
+    
   "@testing-library/dom": "^10.4.0",
   
     
@@ -23,13 +26,19 @@
   "@testing-library/user-event": "^13.5.0",
   
     
+  "apexcharts": "^4.7.0",
+  
+    
   "axios": "^1.8.4",
   
     
   "bootstrap": "^5.3.3",
   
     
-  "chart.js": "^4.4.8",
+  "chart.js": "^4.4.9",
+  
+    
+  "chartjs-plugin-datalabels": "^2.2.0",
   
     
   "cors": "^2.8.5",
@@ -53,7 +62,13 @@
   "framer-motion": "^12.6.3",
   
     
+  "html2canvas": "^1.4.1",
+  
+    
   "jquery": "^3.7.1",
+  
+    
+  "jspdf": "^3.0.1",
   
     
   "lz-string": "^1.5.0",
@@ -65,10 +80,16 @@
   "react": "^19.0.0",
   
     
+  "react-apexcharts": "^1.7.0",
+  
+    
   "react-bootstrap": "^2.10.9",
   
     
   "react-chartjs-2": "^5.3.0",
+  
+    
+  "react-color": "^2.19.3",
   
     
   "react-dom": "^19.0.0",

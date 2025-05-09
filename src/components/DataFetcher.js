@@ -35,6 +35,7 @@ export default function DataFetcher({ onTableReady }) {
 
     fetchData();
   }, []);
+  
 
   if (loading) return <div>Loading data...</div>;
   if (error) return <div>Error: {error}</div>;
